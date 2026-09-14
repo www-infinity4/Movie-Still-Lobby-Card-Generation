@@ -6,8 +6,9 @@ A mobile-first, browser-based generator that creates a collectible five-card lob
 
 - **5 lobby cards per set**
 - **1 StarCoin per completed set**
+- Uses the same Control Phi / StarQuest StarCoin balance earned by confirmed channel shares.
 - StarCoin is charged only after all five cards render successfully.
-- A completed purchase records a set ID, owner wallet ID, five selected timestamps, scene-caption data, and a cryptographic uniqueness fingerprint in the unified Infinity wallet event history.
+- A completed purchase records a set ID, owner wallet ID, five selected timestamps, scene-caption data, and a cryptographic uniqueness fingerprint in the shared wallet ledger.
 - The ownership record identifies the generated card set. It does not transfer copyright in the underlying movie.
 
 ## How the cards are made
@@ -25,6 +26,10 @@ A mobile-first, browser-based generator that creates a collectible five-card lob
 ## Uniqueness
 
 Every set receives a random nonce plus a SHA-256 fingerprint derived from the movie, five frame signatures and timestamps. Local history strongly prevents repeat scenes on later sets from the same device. A future shared ledger can use the existing fingerprint field to enforce network-wide global uniqueness.
+
+## Demo
+
+`demo.html` shows a completed five-card presentation using public-domain screenshots from Buster Keaton's *The General* (1926), so the card design can be inspected without spending a StarCoin.
 
 ## Rights
 
