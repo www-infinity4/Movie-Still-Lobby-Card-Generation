@@ -4,11 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#17110d">
-  <meta name="description" content="Create a unique five-card 8×10 lobby card set from a movie you are permitted to use.">
+  <meta name="description" content="Create a unique five-card 10×8 lobby card set from a movie you are permitted to use. Five print-ready cards cost 1 StarCoin.">
   <title>Movie Still Lobby Card Generator</title>
   <link rel="canonical" href="https://www-infinity4.github.io/Movie-Still-Lobby-Card-Generation/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Movie Still Lobby Card Generator">
+  <meta property="og:description" content="Five unique print-ready movie lobby cards for 1 StarCoin.">
+  <meta property="og:url" content="https://www-infinity4.github.io/Movie-Still-Lobby-Card-Generation/">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317110d'/%3E%3Crect x='10' y='14' width='44' height='36' fill='white'/%3E%3Crect x='15' y='19' width='34' height='22' fill='%23b8392e'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://www-infinity4.github.io/Control-Phi/control-phi.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -21,7 +27,7 @@
       <div class="intro">
         <p class="eyebrow">FIVE-CARD MOVIE SET</p>
         <h1 id="pageTitle">Find the frames worth hanging.</h1>
-        <p>Choose a movie file you own or are permitted to use. The movie stays on your device.</p>
+        <p>Choose a movie file you own or are permitted to use. The movie never leaves your device. The generator searches the whole feature, avoids repeats from your earlier sets, and turns five strong scenes into individually numbered lobby cards.</p>
       </div>
 
       <form id="cardForm" class="order-panel">
@@ -29,15 +35,21 @@
         <label class="file-picker" for="movieFile"><span>Choose movie file</span><small id="fileName">MP4, WebM, MOV or M4V</small></label>
         <input id="movieFile" type="file" accept="video/mp4,video/webm,video/quicktime,.m4v" required>
         <fieldset>
-          <legend>Caption style</legend>
-          <label><input type="radio" name="caption" value="classic" checked> Classic title strip</label>
-          <label><input type="radio" name="caption" value="clean"> Image only</label>
+          <legend>Lobby-card style</legend>
+          <label><input type="radio" name="caption" value="classic" checked> White-border title + scene description</label>
+          <label><input type="radio" name="caption" value="clean"> Image-only card</label>
         </fieldset>
         <label class="rights"><input id="rightsCheck" type="checkbox" required> I have permission to create and use stills from this movie.</label>
-        <div class="price-row"><div><strong>5 unique cards</strong><span>8×10 landscape · print-ready PNG</span></div><b>1 ⭐</b></div>
+        <div class="price-row"><div><strong>5 unique cards</strong><span>10×8 landscape · 300 DPI · 3000×2400 PNG</span></div><b>1 ⭐</b></div>
         <button id="generateButton" class="primary" type="submit">Create my five-card set</button>
-        <p id="status" class="status" role="status" aria-live="polite">Your StarCoin is charged only after five finished cards are ready.</p>
+        <p id="status" class="status" role="status" aria-live="polite">Your StarCoin is charged only after all five cards render successfully.</p>
       </form>
+    </section>
+
+    <section class="how-it-works" aria-label="How lobby cards are selected">
+      <article><b>1</b><strong>Scan the whole film</strong><span>Dozens of candidate frames are sampled across the complete runtime.</span></article>
+      <article><b>2</b><strong>Reject weak repeats</strong><span>Sharpness, contrast, detail, spacing, motion and prior-set history are scored.</span></article>
+      <article><b>3</b><strong>Build five originals</strong><span>Each selected scene receives its own card number, scene caption, set ID and uniqueness fingerprint.</span></article>
     </section>
 
     <section id="progressPanel" class="progress-panel" hidden aria-live="polite">
@@ -48,13 +60,20 @@
     </section>
 
     <section id="results" class="results" hidden aria-labelledby="resultTitle">
-      <div class="result-heading"><div><p class="eyebrow">SET COMPLETE</p><h2 id="resultTitle">Your lobby cards</h2><p id="setNumber"></p></div><button id="downloadAll" class="secondary" type="button">Download all five</button></div>
+      <div class="result-heading">
+        <div><p class="eyebrow">SET COMPLETE</p><h2 id="resultTitle">Your lobby cards</h2><p id="setNumber"></p></div>
+        <button id="downloadAll" class="secondary" type="button">Download all five</button>
+      </div>
+      <div id="ownershipReceipt" class="ownership-receipt" hidden></div>
       <div id="cardGrid" class="card-grid"></div>
       <button id="anotherSet" class="primary another" type="button">Create a different set · 1 ⭐</button>
     </section>
   </main>
 
-  <footer>Files are processed locally. Use public-domain, licensed, or personally authorized footage.</footer>
+  <footer>
+    <strong>Your set record identifies the generated cards; it does not transfer copyright in the underlying movie.</strong>
+    <span>Files are processed locally. Use public-domain, licensed, owned, or personally authorized footage.</span>
+  </footer>
   <script src="https://www-infinity4.github.io/Mint-For-Infinity/unified-wallet.js?v=20260831-game-rewards1"></script>
   <script src="app.js"></script>
 </body>
